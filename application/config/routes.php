@@ -68,3 +68,12 @@ $route['gantipass']['post'] = 'user/prosesGantipass';
 $route['profile']['get'] = 'user/profile';
 $route['profile/edit']['get'] = 'user/editProfile';
 $route['profile']['post'] = 'user/prosesProfile';
+
+
+$route['sanggar']['get'] = 'sanggar/index';
+$route['sanggar']['post'] = 'sanggar/create';
+$route['sanggar/new']['get'] = 'sanggar/new';
+$route['sanggar/(:any)/edit']['get'] = 'sanggar/edit/$1';
+$route['sanggar/(:any)']['get'] = 'sanggar/edit/$1';
+$route['sanggar/(:any)']['post'] = 'sanggar/update/$1';
+$route['sanggar/(:any)/delete'] = 'sanggar/delete/$1';

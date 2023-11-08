@@ -33,12 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Image</th>
-                                    <th>Username</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Role</th>
-                                    <th>Email</th>
-                                    <th>Is Active</th>
+                                    <th>nama sangar</th>
+                                    <th>lokasi sanggar</th>
+                                    <th>tentang sanggar</th>
+                                    <th>no rek</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -47,24 +45,10 @@
                                 foreach ($data as $d) : ?>
                                     <tr>
                                         <td><?= $a++; ?></td>
-                                        <td>
-                                            <img width="70" src="<?= base_url(); ?>assets/uploads/users/<?= $d['image']; ?>" alt="">
-                                        </td>
-                                        <td><?= $d['username']; ?></td>
-                                        <td><?= $d['nama_lengkap']; ?></td>
-                                        <td><?= $d['nama_role']; ?></td>
-                                        <td><?= $d['email']; ?></td>
-                                        <td>
-                                            <?php if ($d['is_active'] == 1) : ?>
-                                                <a class="btn btn-success btn-sm" href="<?= base_url($link . '/active/' . $d['id'] . '/0'); ?>">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            <?php else : ?>
-                                                <a class="btn btn-danger btn-sm" href="<?= base_url($link . '/active/' . $d['id'] . '/1'); ?>">
-                                                    <i class="fas fa-times"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                        </td>
+                                        <td><?= $d['nama_sanggar']; ?></td>
+                                        <td><?= $d['lokasi_sanggar']; ?></td>
+                                        <td><?= $d['tentang_sanggar']; ?></td>
+                                        <td><?= $d['no_rek']; ?></td>
                                         <td>
                                             <a class="btn btn-warning btn-sm mb-2" href="<?= base_url($link . '/' . $d['id'] . '/edit'); ?>">Edit</a>
                                             <a class="btn btn-danger btn-sm mb-2 del-tombol" href="<?= base_url($link . '/' . $d['id'] . '/delete'); ?>">Delete</a>

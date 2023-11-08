@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">New User</h1>
+                <h1 class="m-0">New <?= $title; ?></h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Home</a></li>
-                    <li class="breadcrumb-item">Kelola User</li>
+                    <li class="breadcrumb-item">Kelola <?= $title; ?></li>
                     <li class="breadcrumb-item active">New</li>
                 </ol>
             </div>
@@ -26,10 +26,10 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        New User
+                        New <?= $title; ?>
                     </div>
                     <div class="card-body">
-                        <form action="<?= base_url('user'); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url($link); ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
@@ -69,7 +69,7 @@
                                 <input type="file" class="form-control" id="image" name="image" onchange="previewImage(this, '#imagePreview')">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="<?= base_url('user'); ?>" class="btn btn-secondary">Batal</a>
+                            <a href="<?= base_url($link); ?>" class="btn btn-secondary">Batal</a>
                         </form>
                     </div>
                 </div>

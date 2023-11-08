@@ -205,7 +205,9 @@ class BaseModel extends CI_Model
             $this->db->where("$this->deletedField IS NOT NULL");
         } else {
             if ($this->withDeleted == false) {
-                $this->db->where("$this->deletedField IS NULL");
+                if ($this->useSoftDeletes == true) {
+                    $this->db->where("$this->deletedField IS NULL");
+                }
             }
         }
     }

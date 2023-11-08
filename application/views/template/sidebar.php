@@ -54,7 +54,7 @@ $data_user = getProfile();
 
         <?php endif; ?>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="<?= base_url('sanggar'); ?>" class="nav-link <?= ($segment == 'sanggar') ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Kelola Sanggar
