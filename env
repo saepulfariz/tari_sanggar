@@ -1,0 +1,6 @@
+BASE_URL=
+DB_HOSTNAME=localhost
+DB_USERNAME=root
+DB_PASSWORD=
+DB_DATABASE=tari_sanggar
+DB_DRIVER=mysqli
