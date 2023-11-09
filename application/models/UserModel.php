@@ -1,7 +1,7 @@
 <?php
 
 
-require('application/models/BaseModel.php');
+require_once('application/models/BaseModel.php');
 
 class UserModel extends BaseModel
 {

@@ -3,9 +3,9 @@
 
 require_once('application/models/BaseModel.php');
 
-class SanggarModel extends BaseModel
+class SanggarPaketModel extends BaseModel
 {
-    public $table            = 'tb_sanggar';
+    public $table            = 'tb_sanggar_paket';
     public $primaryKey       = 'id';
     public $useAutoIncrement = true;
     public $insertID         = 0;

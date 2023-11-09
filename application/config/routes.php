@@ -70,6 +70,15 @@ $route['profile/edit']['get'] = 'user/editProfile';
 $route['profile']['post'] = 'user/prosesProfile';
 
 
+// $route['sanggar/paket']['get'] = 'SanggarPaket/index';
+$route['sanggar/paket/(:any)']['get'] = 'SanggarPaket/index/$1';
+$route['sanggar/paket']['post'] = 'SanggarPaket/create';
+// $route['sanggar/paket/new']['get'] = 'SanggarPaket/new';
+$route['sanggar/paket/new/(:any)']['get'] = 'SanggarPaket/new/$1';
+$route['sanggar/paket/(:any)/edit']['get'] = 'SanggarPaket/edit/$1';
+$route['sanggar/paket/(:any)']['post'] = 'SanggarPaket/update/$1';
+$route['sanggar/paket/(:any)/delete'] = 'SanggarPaket/delete/$1';
+
 $route['sanggar']['get'] = 'sanggar/index';
 $route['sanggar']['post'] = 'sanggar/create';
 $route['sanggar/new']['get'] = 'sanggar/new';
