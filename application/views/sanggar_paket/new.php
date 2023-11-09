@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="harga_paket">Harga Paket</label>
-                                <input type="number" class="form-control" id="harga_paket" name="harga_paket" placeholder="no rek" value="<?= set_value('harga_paket'); ?>">
+                                <input type="number" class="form-control" id="harga_paket" name="harga_paket" placeholder="Harga Paket" value="<?= set_value('harga_paket'); ?>">
                             </div>
                             <?= form_error('harga_paket', '<div class="error text-danger mb-2" style="margin-top: -15px">', '</div>'); ?>
 

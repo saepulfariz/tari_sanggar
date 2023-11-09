@@ -50,6 +50,7 @@
                                         <td><?= $d['tentang_sanggar']; ?></td>
                                         <td><?= $d['no_rek']; ?></td>
                                         <td>
+                                            <a class="btn btn-success btn-sm mb-2" href="<?= base_url($link . '/' . $d['id']); ?>">Detail</a>
                                             <a class="btn btn-primary btn-sm mb-2" href="<?= base_url($link . '/galleri/' . $d['id']); ?>">Galleri</a>
                                             <a class="btn btn-info btn-sm mb-2" href="<?= base_url($link . '/paket/' . $d['id']); ?>">Paket</a>
                                             <a class="btn btn-warning btn-sm mb-2" href="<?= base_url($link . '/' . $d['id'] . '/edit'); ?>">Edit</a>

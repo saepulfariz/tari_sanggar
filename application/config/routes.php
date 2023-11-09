@@ -87,10 +87,12 @@ $route['sanggar/galleri/(:any)/edit']['get'] = 'SanggarGalleri/edit/$1';
 $route['sanggar/galleri/(:any)']['post'] = 'SanggarGalleri/update/$1';
 $route['sanggar/galleri/(:any)/delete'] = 'SanggarGalleri/delete/$1';
 
+$route['sanggar/order']['post'] = 'sanggar/order';
+
 $route['sanggar']['get'] = 'sanggar/index';
 $route['sanggar']['post'] = 'sanggar/create';
 $route['sanggar/new']['get'] = 'sanggar/new';
 $route['sanggar/(:any)/edit']['get'] = 'sanggar/edit/$1';
-$route['sanggar/(:any)']['get'] = 'sanggar/edit/$1';
+$route['sanggar/(:any)']['get'] = 'sanggar/show/$1';
 $route['sanggar/(:any)']['post'] = 'sanggar/update/$1';
 $route['sanggar/(:any)/delete'] = 'sanggar/delete/$1';
