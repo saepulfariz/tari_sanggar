@@ -23,7 +23,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-12">
-                <a href="<?= base_url($link . '/new'); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
+                <a href="<?= base_url($link . '/new/' . $id_sanggar); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
                 <div class="card">
                     <div class="card-header">
                         Kelola <?= $title; ?>
@@ -34,9 +34,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>nama sangar</th>
-                                    <th>lokasi sanggar</th>
-                                    <th>tentang sanggar</th>
-                                    <th>no rek</th>
+                                    <th>gambar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -46,12 +44,10 @@
                                     <tr>
                                         <td><?= $a++; ?></td>
                                         <td><?= $d['nama_sanggar']; ?></td>
-                                        <td><?= $d['lokasi_sanggar']; ?></td>
-                                        <td><?= $d['tentang_sanggar']; ?></td>
-                                        <td><?= $d['no_rek']; ?></td>
                                         <td>
-                                            <a class="btn btn-primary btn-sm mb-2" href="<?= base_url($link . '/galleri/' . $d['id']); ?>">Galleri</a>
-                                            <a class="btn btn-info btn-sm mb-2" href="<?= base_url($link . '/paket/' . $d['id']); ?>">Paket</a>
+                                            <img width="70" src="<?= base_url(); ?>assets/uploads/galleri/<?= $d['gambar']; ?>" alt="">
+                                        </td>
+                                        <td>
                                             <a class="btn btn-warning btn-sm mb-2" href="<?= base_url($link . '/' . $d['id'] . '/edit'); ?>">Edit</a>
                                             <a class="btn btn-danger btn-sm mb-2 del-tombol" href="<?= base_url($link . '/' . $d['id'] . '/delete'); ?>">Delete</a>
                                         </td>
