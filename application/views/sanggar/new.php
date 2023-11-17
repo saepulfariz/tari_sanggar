@@ -48,6 +48,14 @@
                             </div>
                             <?= form_error('tentang_sanggar', '<div class="error text-danger mb-2" style="margin-top: -15px">', '</div>'); ?>
 
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                <div id="imagePreview">
+                                    <img class="rounded-circle img-thumbnail d-block mb-2" width="120" src="<?= base_url(); ?>assets/uploads/galleri/default.jpg" alt="">
+
+                                </div>
+                                <input type="file" class="form-control" id="image" name="image" onchange="previewImage(this, '#imagePreview')">
+                            </div>
 
                             <div class="form-group">
                                 <label for="no_rek">No Rek</label>

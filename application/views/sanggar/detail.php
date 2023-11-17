@@ -24,7 +24,7 @@
         <div class="row justify-content-center mb-2">
             <div class="col-md-5 mb-2 ">
                 <div class="text-right">
-                    <img class="img-thumbnail mb-3" width="80%" src="<?= base_url(); ?>/assets/uploads/galleri/default.jpg" alt="">
+                    <img class="img-thumbnail mb-3" width="80%" src="<?= base_url(); ?>/assets/uploads/galleri/<?= $data['foto_sanggar']; ?>" alt="">
                 </div>
 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

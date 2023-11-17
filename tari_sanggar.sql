@@ -49,6 +49,7 @@ INSERT INTO `tb_role` (`id`, `nama_role`) VALUES
 
 CREATE TABLE `tb_sanggar` (
   `id` int(11) NOT NULL,
+  `foto_sanggar` varchar(128) NOT NULL DEFAULT 'default.jpg',
   `nama_sanggar` varchar(128) NOT NULL,
   `lokasi_sanggar` varchar(256) NOT NULL,
   `tentang_sanggar` text NOT NULL,

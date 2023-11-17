@@ -6,6 +6,7 @@ class Sanggar extends CI_Controller
     private $title = 'Sanggar';
     private $view = 'sanggar';
     private $link = 'sanggar';
+    private $dir = 'assets/uploads/galleri/';
     public function __construct()
     {
         parent::__construct();
@@ -151,6 +152,31 @@ class Sanggar extends CI_Controller
             ];
 
 
+            $key_name = 'image';
+
+            if (!empty($_FILES[$key_name]['name'])) {
+                // Set preference 
+                $config['upload_path'] = $this->dir;
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = '1000'; // max_size in kb 
+                $config['file_name'] = $_FILES[$key_name]['name'];
+
+                // Load upload library 
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload($key_name)) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data['foto_sanggar'] = $filename;
+                } else {
+                    $this->alert->set('warning', 'Warning', 'Image Failed');
+                    redirect($this->link . '/new', 'refresh');
+                }
+            }
+
+
             $res = $this->model->save($data);
             if ($res) {
                 $this->alert->set('success', 'Success', 'Add Success');
@@ -205,6 +231,33 @@ class Sanggar extends CI_Controller
             $this->edit($id);
         } else {
 
+            $key_name = 'image';
+
+            if (!empty($_FILES[$key_name]['name'])) {
+                // Set preference 
+                $config['upload_path'] = $this->dir;
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = '1000'; // max_size in kb 
+                $config['file_name'] = $_FILES[$key_name]['name'];
+
+                // Load upload library 
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload($key_name)) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data['foto_sanggar'] = $filename;
+                } else {
+                    $this->alert->set('warning', 'Warning', 'Image Failed');
+                    redirect($this->link . '/' . $id . '/edit', 'refresh');
+                }
+            }
+
+            if ($result['foto_sanggar'] != 'default.jpg') {
+                @unlink($this->dir . '/' . $result['foto_sanggar']);
+            }
 
             $res = $this->model->update($id, $data);
             if ($res) {

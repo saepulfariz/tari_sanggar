@@ -33,6 +33,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>foto sangar</th>
                                     <th>nama sangar</th>
                                     <th>lokasi sanggar</th>
                                     <th>tentang sanggar</th>
@@ -45,6 +46,9 @@
                                 foreach ($data as $d) : ?>
                                     <tr>
                                         <td><?= $a++; ?></td>
+                                        <td>
+                                            <img width="70" src="<?= base_url(); ?>/assets/uploads/galleri/<?= $d['foto_sanggar']; ?>" alt="">
+                                        </td>
                                         <td><?= $d['nama_sanggar']; ?></td>
                                         <td><?= $d['lokasi_sanggar']; ?></td>
                                         <td><?= $d['tentang_sanggar']; ?></td>
