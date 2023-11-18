@@ -89,6 +89,7 @@ $route['sanggar/galleri/(:any)/delete'] = 'SanggarGalleri/delete/$1';
 
 $route['sanggar/order']['post'] = 'sanggar/order';
 
+$route['sanggar/calendar']['get'] = 'sanggar/getCalendar';
 $route['sanggar']['get'] = 'sanggar/index';
 $route['sanggar']['post'] = 'sanggar/create';
 $route['sanggar/new']['get'] = 'sanggar/new';

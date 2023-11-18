@@ -12,6 +12,7 @@ class Sanggar extends CI_Controller
         parent::__construct();
         cekLogin();
         $this->load->model('SanggarModel', 'model');
+        $this->load->model('SanggarOrderModel', 'order');
     }
 
     public function index()
@@ -20,6 +21,40 @@ class Sanggar extends CI_Controller
         $data['link'] = $this->link;
         $data['data'] = $this->model->findAll();
         $this->template->load('template/index', $this->view . '/index', $data);
+    }
+
+    function getCalendar()
+    {
+
+        if (!$this->input->get('start') || !$this->input->get('end')) {
+            echo 'Please provide a date range.';
+            die;
+        }
+
+        $start = date('Y-m-d', strtotime($this->input->get('start')));
+        $end = date('Y-m-d', strtotime($this->input->get('end')));
+        $id_sanggar = $this->input->get('id_sanggar');
+        $select_title = "status as title,";
+        $data = $this->order->select("tb_sanggar_order.id,( 
+            CASE 
+                WHEN status = 'DONE' 
+                THEN 'green' 
+                ELSE 
+                    CASE 
+                        WHEN status = 'PENDING' 
+                        THEN 'grey' 
+                        ELSE 
+                            CASE 
+                                WHEN status = 'BOOKING' 
+                                THEN 'yellow' 
+                                ELSE 'red'
+                            END 
+                    END 
+            END 
+        ) as color,
+        " . $select_title . "
+          tanggal_acara as start, tanggal_acara as end")->where('id_sanggar', $id_sanggar)->where('tanggal_acara >', $start)->where('tanggal_acara <', $end)->join('tb_sanggar_paket', 'tb_sanggar_paket.id = tb_sanggar_order.id_paket')->join('tb_sanggar', 'tb_sanggar.id = tb_sanggar_paket.id_sanggar')->join('tb_user', 'tb_user.id = tb_sanggar_order.id_user')->findAll();
+        echo json_encode($data);
     }
 
     public function show($id)
@@ -45,8 +80,6 @@ class Sanggar extends CI_Controller
 
     public function order()
     {
-
-        $this->load->model('SanggarOrderModel', 'order');
 
         $this->form_validation->set_rules('nama_acara', 'Nama Acara', 'required');
         $this->form_validation->set_rules('tanggal_acara', 'Tanggal Acara', 'required');

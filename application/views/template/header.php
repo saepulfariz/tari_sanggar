@@ -20,4 +20,12 @@
 
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+  <style>
+    .fc-event,
+    .event-title {
+      padding: 0 1px;
+      white-space: normal;
+    }
+  </style>
 </head>

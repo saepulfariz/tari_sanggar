@@ -72,7 +72,7 @@
                             </tr>
                         </table>
 
-                        <button type="button" class="btn btn-primary btn-sm mt-2">Kalender</button>
+                        <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#modalCalendar" id="modal-calendar">Kalender</button>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                     </div>
                     <div class="card-body">
                         <form action="<?= base_url($link . '/order'); ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_sanggar" value="<?= $data['id']; ?>">
+                            <input type="hidden" name="id_sanggar" id="id_sanggar" value="<?= $data['id']; ?>">
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
@@ -206,3 +206,21 @@
 
     </div>
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCalendarLabel">Kalender</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div id='calendar' class="h-100 w-100"></div>
+            </div>
+        </div>
+    </div>
+</div>
