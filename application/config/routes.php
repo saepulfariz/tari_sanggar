@@ -70,30 +70,43 @@ $route['profile/edit']['get'] = 'user/editProfile';
 $route['profile']['post'] = 'user/prosesProfile';
 
 
-// $route['sanggar/paket']['get'] = 'SanggarPaket/index';
-$route['sanggar/paket/(:any)']['get'] = 'SanggarPaket/index/$1';
-$route['sanggar/paket']['post'] = 'SanggarPaket/create';
-// $route['sanggar/paket/new']['get'] = 'SanggarPaket/new';
-$route['sanggar/paket/new/(:any)']['get'] = 'SanggarPaket/new/$1';
+
+
+$route['sanggar/paket']['get'] = 'SanggarPaket/index';
 $route['sanggar/paket/(:any)/edit']['get'] = 'SanggarPaket/edit/$1';
 $route['sanggar/paket/(:any)']['post'] = 'SanggarPaket/update/$1';
 $route['sanggar/paket/(:any)/delete'] = 'SanggarPaket/delete/$1';
+$route['sanggar/paket/new/(:any)']['get'] = 'SanggarPaket/new/$1';
+$route['sanggar/paket/(:any)']['get'] = 'SanggarPaket/index/$1';
+$route['sanggar/paket']['post'] = 'SanggarPaket/create';
 
+$route['sanggar/galleri']['get'] = 'SanggarGalleri/index';
 $route['sanggar/galleri/(:any)']['get'] = 'SanggarGalleri/index/$1';
+$route['sanggar/galleri/new/(:any)']['get'] = 'SanggarGalleri/new/$1';
 $route['sanggar/galleri']['post'] = 'SanggarGalleri/create';
 // $route['sanggar/galleri/new']['get'] = 'SanggarGalleri/new';
-$route['sanggar/galleri/new/(:any)']['get'] = 'SanggarGalleri/new/$1';
 $route['sanggar/galleri/(:any)/edit']['get'] = 'SanggarGalleri/edit/$1';
 $route['sanggar/galleri/(:any)']['post'] = 'SanggarGalleri/update/$1';
 $route['sanggar/galleri/(:any)/delete'] = 'SanggarGalleri/delete/$1';
 
-$route['sanggar/order']['post'] = 'sanggar/order';
 
-$route['sanggar/calendar']['get'] = 'sanggar/getCalendar';
+$route['sanggar/(:num)']['get'] = 'sanggar/show/$1';
 $route['sanggar']['get'] = 'sanggar/index';
 $route['sanggar']['post'] = 'sanggar/create';
+$route['sanggar/calendar']['get'] = 'sanggar/getCalendar';
 $route['sanggar/new']['get'] = 'sanggar/new';
-$route['sanggar/(:any)/edit']['get'] = 'sanggar/edit/$1';
-$route['sanggar/(:any)']['get'] = 'sanggar/show/$1';
+$route['sanggar/order']['post'] = 'sanggar/order';
 $route['sanggar/(:any)']['post'] = 'sanggar/update/$1';
-$route['sanggar/(:any)/delete'] = 'sanggar/delete/$1';
+$route['sanggar/(:any)/edit']['get'] = 'sanggar/edit/$1';
+$route['sanggar/(:any)/delete']['get'] = 'sanggar/delete/$1';
+
+
+$route['order']['get'] = 'order/index';
+$route['order/ajax_paket']['get'] = 'order/ajax_paket';
+$route['order/ajax_paket_detail']['get'] = 'order/ajax_paket_detail';
+$route['order']['post'] = 'order/create';
+$route['order/new']['get'] = 'order/new';
+$route['order/(:any)/edit']['get'] = 'order/edit/$1';
+$route['order/(:any)']['get'] = 'order/show/$1';
+$route['order/(:any)']['post'] = 'order/update/$1';
+$route['order/(:any)/delete'] = 'order/delete/$1';

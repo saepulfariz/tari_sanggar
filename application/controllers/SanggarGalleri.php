@@ -19,8 +19,8 @@ class SanggarGalleri extends CI_Controller
     {
         $result = $this->sanggar->find($id);
 
-        if (!$result) {
-            $this->alert->set('warning', 'Warning', 'Not Valid');
+        if ($result == null) {
+            // $this->alert->set('warning', 'Warning', 'Not Valid Galleri');
             redirect('sanggar', 'refresh');
         }
 

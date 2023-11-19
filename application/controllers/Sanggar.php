@@ -13,6 +13,7 @@ class Sanggar extends CI_Controller
         cekLogin();
         $this->load->model('SanggarModel', 'model');
         $this->load->model('SanggarOrderModel', 'order');
+        $this->load->model('SanggarPaketModel', 'paket');
     }
 
     public function index()
@@ -62,7 +63,7 @@ class Sanggar extends CI_Controller
         $result = $this->model->find($id);
 
         if (!$result) {
-            $this->alert->set('warning', 'Warning', 'Not Valid');
+            $this->alert->set('warning', 'Warning', 'Not Valid Sanggar');
             redirect($this->link, 'refresh');
         }
 
@@ -89,6 +90,8 @@ class Sanggar extends CI_Controller
         $this->form_validation->set_rules('alamat', 'alamat', 'required');
 
         $id_sanggar = $this->input->post('id_sanggar', true);
+        $id_paket = $this->input->post('id_paket', true);
+        $data_paket = $this->paket->find($id_paket);
         if ($this->form_validation->run() == FALSE) {
             $this->show($id_sanggar);
         } else {
@@ -101,14 +104,19 @@ class Sanggar extends CI_Controller
                 'alamat' => $this->input->post('alamat', true),
                 'catatan_patner' => $this->input->post('catatan_patner', true),
                 'status' => 'PENDING',
+                'bayar1' => 0,
+                'bayar2' => 0,
                 'id_user' => getProfile('id'),
                 'mulai_order' => date('Y-m-d H:i:s')
             ];
 
+
             $is_dp = $this->input->post('is_dp', true);
             if ($is_dp) {
+                // $data['bayar1'] = $data_paket['harga_paket'] / 2;
                 $data['is_dp'] = $is_dp;
             }
+            $data['sisa'] = $data_paket['harga_paket'] - ($data['bayar1'] + $data['bayar2']);
 
 
             // PENDING (DP)
@@ -225,7 +233,7 @@ class Sanggar extends CI_Controller
         $result = $this->model->find($id);
 
         if (!$result) {
-            $this->alert->set('warning', 'Warning', 'Not Valid');
+            $this->alert->set('warning', 'Warning', 'Not Valid edit');
             redirect($this->link, 'refresh');
         }
 
@@ -311,7 +319,7 @@ class Sanggar extends CI_Controller
         $result = $this->model->find($id);
 
         if (!$result) {
-            $this->alert->set('warning', 'Warning', 'Not Valid');
+            $this->alert->set('warning', 'Warning', 'Not Valid delete');
             redirect($this->link, 'refresh');
         }
 

@@ -62,7 +62,7 @@ $data_user = getProfile();
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="<?= base_url('order'); ?>" class="nav-link <?= ($segment == 'order') ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Kelola Order

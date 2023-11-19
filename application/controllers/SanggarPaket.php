@@ -19,7 +19,7 @@ class SanggarPaket extends CI_Controller
         $result = $this->sanggar->find($id);
 
         if (!$result) {
-            $this->alert->set('warning', 'Warning', 'Not Valid');
+            // $this->alert->set('warning', 'Warning', 'Not Valid Paket');
             redirect('sanggar', 'refresh');
         }
 

@@ -52,7 +52,6 @@ class User extends CI_Controller
                 'password' => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
                 'nama_lengkap' => $this->input->post('nama_lengkap', true),
                 'email' => $this->input->post('email', true),
-                'nip' => $this->input->post('nip', true),
                 'id_role' => $this->input->post('id_role', true),
                 'is_active' => 1,
             ];
