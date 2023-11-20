@@ -1,7 +1,7 @@
 <body class="hold-transition register-page">
   <div class="register-box">
     <div class="register-logo">
-      <a href="../../index2.html"><b>Admin</b>LTE</a>
+      <a href="<?= base_url(); ?>"><b>Tenaga Kerja </b>Wedding</a>
     </div>
 
     <div class="card">

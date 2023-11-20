@@ -1,7 +1,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b>LTE</a>
+      <a href="<?= base_url(); ?>"><b>Tenaga Kerja </b>Wedding</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
