@@ -110,3 +110,5 @@ $route['order/(:any)/edit']['get'] = 'order/edit/$1';
 $route['order/(:any)']['get'] = 'order/show/$1';
 $route['order/(:any)']['post'] = 'order/update/$1';
 $route['order/(:any)/delete'] = 'order/delete/$1';
+
+$route['laporan']['get'] = 'laporan/index';
