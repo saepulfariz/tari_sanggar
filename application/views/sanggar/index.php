@@ -23,7 +23,9 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-12">
-                <a href="<?= base_url($link . '/new'); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
+                <?php if ($this->session->userdata('id_role') == 1) : ?>
+                    <a href="<?= base_url($link . '/new'); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-header">
                         Kelola <?= $title; ?>
@@ -37,7 +39,9 @@
                                     <th>nama sangar</th>
                                     <th>lokasi sanggar</th>
                                     <th>tentang sanggar</th>
-                                    <th>no rek</th>
+                                    <?php if ($this->session->userdata('id_role') == 1) : ?>
+                                        <th>no rek</th>
+                                    <?php endif; ?>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,13 +56,17 @@
                                         <td><?= $d['nama_sanggar']; ?></td>
                                         <td><?= $d['lokasi_sanggar']; ?></td>
                                         <td><?= $d['tentang_sanggar']; ?></td>
-                                        <td><?= $d['no_rek']; ?></td>
+                                        <?php if ($this->session->userdata('id_role') == 1) : ?>
+                                            <td><?= $d['no_rek']; ?></td>
+                                        <?php endif; ?>
                                         <td>
                                             <a class="btn btn-success btn-sm mb-2" href="<?= base_url($link . '/' . $d['id']); ?>">Detail</a>
-                                            <a class="btn btn-primary btn-sm mb-2" href="<?= base_url($link . '/galleri/' . $d['id']); ?>">Galleri</a>
-                                            <a class="btn btn-info btn-sm mb-2" href="<?= base_url($link . '/paket/' . $d['id']); ?>">Paket</a>
-                                            <a class="btn btn-warning btn-sm mb-2" href="<?= base_url($link . '/' . $d['id'] . '/edit'); ?>">Edit</a>
-                                            <a class="btn btn-danger btn-sm mb-2 del-tombol" href="<?= base_url($link . '/' . $d['id'] . '/delete'); ?>">Delete</a>
+                                            <?php if ($this->session->userdata('id_role') == 1) : ?>
+                                                <a class="btn btn-primary btn-sm mb-2" href="<?= base_url($link . '/galleri/' . $d['id']); ?>">Galleri</a>
+                                                <a class="btn btn-info btn-sm mb-2" href="<?= base_url($link . '/paket/' . $d['id']); ?>">Paket</a>
+                                                <a class="btn btn-warning btn-sm mb-2" href="<?= base_url($link . '/' . $d['id'] . '/edit'); ?>">Edit</a>
+                                                <a class="btn btn-danger btn-sm mb-2 del-tombol" href="<?= base_url($link . '/' . $d['id'] . '/delete'); ?>">Delete</a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
