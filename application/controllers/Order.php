@@ -27,7 +27,12 @@ class Order extends CI_Controller
     {
         $data['title'] = $this->title;
         $data['link'] = $this->link;
-        $data['data'] = $this->model->select('tb_sanggar_order.*, nama_lengkap, nama_paket, harga_paket, nama_sanggar')->join('tb_sanggar_paket', 'tb_sanggar_paket.id = tb_sanggar_order.id_paket')->join('tb_sanggar', 'tb_sanggar.id = tb_sanggar_paket.id_sanggar')->join('tb_user', 'tb_user.id = tb_sanggar_order.id_user')->orderBy('mulai_order', 'DESC')->findAll();
+        if ($this->session->userdata('id_role') == 3) {
+            $order = $this->model->select('tb_sanggar_order.*, nama_lengkap, nama_paket, harga_paket, nama_sanggar')->join('tb_sanggar_paket', 'tb_sanggar_paket.id = tb_sanggar_order.id_paket')->join('tb_sanggar', 'tb_sanggar.id = tb_sanggar_paket.id_sanggar')->join('tb_user', 'tb_user.id = tb_sanggar_order.id_user')->orderBy('mulai_order', 'DESC')->where('id_user', $this->session->userdata('id_user'))->findAll();
+        } else {
+            $order = $this->model->select('tb_sanggar_order.*, nama_lengkap, nama_paket, harga_paket, nama_sanggar')->join('tb_sanggar_paket', 'tb_sanggar_paket.id = tb_sanggar_order.id_paket')->join('tb_sanggar', 'tb_sanggar.id = tb_sanggar_paket.id_sanggar')->join('tb_user', 'tb_user.id = tb_sanggar_order.id_user')->orderBy('mulai_order', 'DESC')->findAll();
+        }
+        $data['data'] = $order;
         $this->template->load('template/index', $this->view . '/index', $data);
     }
 

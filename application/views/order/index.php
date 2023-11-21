@@ -23,7 +23,9 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-12">
-                <a href="<?= base_url($link . '/new'); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
+                <?php if ($this->session->userdata('id_role') == 1) : ?>
+                    <a href="<?= base_url($link . '/new'); ?>" class="btn btn-primary btn-sm mb-2">Tambah</a>
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-header">
                         Kelola <?= $title; ?>
