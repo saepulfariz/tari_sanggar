@@ -323,6 +323,11 @@ class Order extends CI_Controller
             redirect($this->link, 'refresh');
         }
 
+        if ($result['status'] != 'PENDING') {
+            $this->alert->set('warning', 'Warning', 'Order bukan status PENDING');
+            redirect($this->link, 'refresh');
+        }
+
         $res = $this->model->delete($id);
         if ($res) {
             $this->alert->set('success', 'Success', 'Delete Success');
