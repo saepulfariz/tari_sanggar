@@ -18,6 +18,19 @@
 </div>
 <!-- /.content-header -->
 
+<?php
+
+$id_role = $this->session->userdata('id_role');
+$id_user = $this->session->userdata('id_user');
+$readonly = "";
+$disabled = "";
+if ($id_role == 3) {
+    $readonly = "readonly";
+    $disabled = "disabled";
+}
+
+
+?>
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -30,7 +43,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nama_lengkap">Nama Konsumen</label>
-                                <select name="id_user" id="id_user" class="form-control">
+                                <select name="id_user" id="id_user" <?= $readonly . ' ' . $disabled; ?> class="form-control">
                                     <?php foreach ($konsumen as $d) : ?>
                                         <?php if ($d['id'] == $data['id_user']) : ?>
                                             <option selected value="<?= $d['id']; ?>"><?= $d['nama_lengkap']; ?></option>
@@ -43,7 +56,7 @@
                             <?= form_error('nama_lengkap', '<div class="error text-danger mb-2" style="margin-top: -15px">', '</div>'); ?>
                             <div class="form-group">
                                 <label for="nama_sanggar">Nama Sanggar</label>
-                                <select name="id_sanggar" id="id_sanggar" class="form-control">
+                                <select name="id_sanggar" id="id_sanggar" <?= $readonly . ' ' . $disabled; ?> class="form-control">
                                     <?php foreach ($sanggar as $d) : ?>
                                         <?php if ($d['id'] == $data['id_sanggar']) : ?>
                                             <option selected value="<?= $d['id']; ?>"><?= $d['nama_sanggar']; ?></option>
@@ -57,7 +70,7 @@
 
                             <div class="form-group">
                                 <label for="id_paket">Nama Paket</label>
-                                <select name="id_paket" id="id_paket" class="form-control" disabled>
+                                <select name="id_paket" id="id_paket" <?= $readonly . ' ' . $disabled; ?> class="form-control" disabled>
                                     <?php foreach ($paket as $d) : ?>
                                         <?php if ($d['id'] == $data['id_paket']) : ?>
                                             <option selected value="<?= $d['id']; ?>"><?= $d['nama_paket']; ?> | Rp.<?= $d['harga_paket']; ?></option>
@@ -81,7 +94,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select name="status" id="status" required class="form-control">
+                                <select name="status" id="status" <?= $readonly . ' ' . $disabled; ?> required class="form-control">
                                     <?php foreach ($status as $d) : ?>
                                         <?php if ($d == $data['status']) : ?>
                                             <option selected><?= $d; ?></option>
@@ -97,11 +110,22 @@
                                 <div id="imagePreview">
                                     <img class="img-thumbnail d-block mb-2" width="120" src="<?= base_url(); ?>assets/uploads/bukti/<?= $data['bukti_tf1']; ?>" alt="">
                                 </div>
-                                <input type="file" class="form-control" id="bukti_tf1" name="bukti_tf1" onchange="previewImage(this, '#imagePreview')">
+                                <?php if ($disabled != '') : ?>
+                                    <?php if ($data['bukti_tf1']) : ?>
+
+                                        <input disabled type="file" class="form-control" id="bukti_tf1" name="bukti_tf1" onchange="previewImage(this, '#imagePreview')">
+                                    <?php else : ?>
+                                        <input type="file" class="form-control" id="bukti_tf1" name="bukti_tf1" onchange="previewImage(this, '#imagePreview')">
+
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                    <input type="file" class="form-control" id="bukti_tf1" name="bukti_tf1" onchange="previewImage(this, '#imagePreview')">
+
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="bayar1">Bayar1</label>
-                                <input type="number" class="form-control" id="bayar1" name="bayar1" placeholder="bayar1" value="<?= $data['bayar1']; ?>">
+                                <input type="number" class="form-control" <?= $readonly; ?> id="bayar1" name="bayar1" placeholder="bayar1" value="<?= $data['bayar1']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="image">Bukti TF2</label>
@@ -109,11 +133,22 @@
                                 <div id="imagePreview">
                                     <img class="img-thumbnail d-block mb-2" width="120" src="<?= base_url(); ?>assets/uploads/bukti/<?= $data['bukti_tf2']; ?>" alt="">
                                 </div>
-                                <input type="file" class="form-control" id="bukti_tf2" name="bukti_tf2" onchange="previewImage(this, '#imagePreview')">
+                                <?php if ($disabled != '') : ?>
+                                    <?php if ($data['bukti_tf2']) : ?>
+
+                                        <input disabled type="file" class="form-control" id="bukti_tf2" name="bukti_tf2" onchange="previewImage(this, '#imagePreview')">
+                                    <?php else : ?>
+                                        <input type="file" class="form-control" id="bukti_tf2" name="bukti_tf2" onchange="previewImage(this, '#imagePreview')">
+
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                    <input type="file" class="form-control" id="bukti_tf2" name="bukti_tf2" onchange="previewImage(this, '#imagePreview')">
+
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="bayar2">Bayar2</label>
-                                <input type="number" class="form-control" id="bayar2" name="bayar2" placeholder="bayar2" value="<?= $data['bayar2']; ?>">
+                                <input type="number" class="form-control" <?= $readonly; ?> id="bayar2" name="bayar2" placeholder="bayar2" value="<?= $data['bayar2']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="sisa">Sisa</label>

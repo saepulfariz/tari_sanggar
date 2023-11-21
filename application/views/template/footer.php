@@ -98,7 +98,9 @@
   function set_paket() {
 
     var id = $('#id_sanggar').val();
-    $('#id_paket').removeAttr('disabled');
+    <?php if ($this->session->userdata('id_role') == 1) : ?>
+      $('#id_paket').removeAttr('disabled');
+    <?php endif; ?>
     $.ajax({
       url: '<?= base_url('order/ajax_paket'); ?>',
       method: 'GET', // POST

@@ -200,18 +200,19 @@ class Order extends CI_Controller
             redirect($this->link, 'refresh');
         }
 
-        $this->form_validation->set_rules('id_paket', 'Nama Paket', 'required');
-        $this->form_validation->set_rules('id_user', 'Nama Konsumen', 'required');
+        // $this->form_validation->set_rules('id_paket', 'Nama Paket', 'required');
+        // $this->form_validation->set_rules('id_user', 'Nama Konsumen', 'required');
         $this->form_validation->set_rules('nama_acara', 'Nama Acara', 'required');
         $this->form_validation->set_rules('tanggal_acara', 'Tanggal Acara', 'required');
         $this->form_validation->set_rules('waktu_mulai', 'Mulai Acara', 'required');
-        $this->form_validation->set_rules('id_paket', 'id_paket', 'required');
         $this->form_validation->set_rules('domisili', 'domisili', 'required');
         $this->form_validation->set_rules('alamat', 'alamat', 'required');
 
-        $id_sanggar = $this->input->post('id_sanggar', true);
-        $id_paket = $this->input->post('id_paket', true);
+        $id_paket = ($this->input->post('id_paket', true)) ? $this->input->post('id_paket', true) : $result['id_paket'];
+        $id_user = ($this->input->post('id_user', true)) ? $this->input->post('id_user', true) : $result['id_user'];
+        $status = ($this->input->post('status', true)) ? $this->input->post('status', true) : $result['status'];
         $data_paket = $this->paket->find($id_paket);
+        $id_sanggar = ($this->input->post('id_sanggar', true)) ? $this->input->post('id_sanggar', true) : $data_paket['id_sanggar'];
         if ($this->form_validation->run() == FALSE) {
             $this->edit($id);
         } else {
@@ -219,12 +220,12 @@ class Order extends CI_Controller
                 'nama_acara' => $this->input->post('nama_acara', true),
                 'tanggal_acara' => $this->input->post('tanggal_acara', true),
                 'waktu_mulai' => $this->input->post('waktu_mulai', true),
-                'id_paket' => $this->input->post('id_paket', true),
+                'id_paket' => $id_paket,
                 'domisili' => $this->input->post('domisili', true),
                 'alamat' => $this->input->post('alamat', true),
                 'catatan_patner' => $this->input->post('catatan_patner', true),
-                'status' => $this->input->post('status', true),
-                'id_user' => $this->input->post('id_user', true),
+                'status' => $status,
+                'id_user' => $id_user,
                 'bayar1' => $this->input->post('bayar1', true),
                 'bayar2' => $this->input->post('bayar2', true),
             ];
@@ -241,7 +242,8 @@ class Order extends CI_Controller
             // REJECT
             // DONE(LUNAS)
 
-            if ($result['tanggal_acara'] == $data['tanggal_acara'] && $data['status'] == 'BOOKING') {
+            // jika tanggal lama dengan tanggal input sama maka gak perlu cek date
+            if ($result['tanggal_acara'] != $data['tanggal_acara']) {
                 $cekDate = $this->model->where('id_sanggar', $id_sanggar)->where('status', 'BOOKING')->where('tanggal_acara', $data['tanggal_acara'])->join('tb_sanggar_paket', 'tb_sanggar_paket.id = tb_sanggar_order.id_paket')->join('tb_sanggar', 'tb_sanggar.id = tb_sanggar_paket.id_sanggar')->first();
 
                 if ($cekDate) {
