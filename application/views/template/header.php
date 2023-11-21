@@ -21,6 +21,8 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
+  <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/DataTables/datatables.min.css" />
+
   <style>
     .fc-event,
     .event-title {

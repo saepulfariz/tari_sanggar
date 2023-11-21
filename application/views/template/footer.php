@@ -17,9 +17,29 @@
 <script src="<?= base_url(); ?>assets/plugins/fullcalendar/index.global.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/fullcalendar/moment.js"></script>
 
+<script type="text/javascript" src="<?= base_url(); ?>assets/DataTables/datatables.min.js"></script>
+
 <?= $this->alert->init('jquery'); ?>
 
 <script>
+  var table = $('.table').DataTable({
+    // responsive: true,
+    "dom": 'Bflrtip',
+    buttons: [{
+      extend: 'excel',
+      footer: false,
+      // exportOptions: {
+      //   columns: [0, 1, 2, 3, 4, 5]
+      // }
+    }],
+    "pageLength": 5,
+    "lengthMenu": [
+      [5, 100, 1000, -1],
+      [5, 100, 1000, "ALL"],
+    ],
+
+  })
+
   // document.addEventListener('DOMContentLoaded', function() {
   //   var calendarEl = document.getElementById('calendar');
   //   var calendar = new FullCalendar.Calendar(calendarEl, {
