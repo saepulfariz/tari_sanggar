@@ -61,22 +61,26 @@ $data_user = getProfile();
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="<?= base_url('order'); ?>" class="nav-link <?= ($segment == 'order') ? 'active' : ''; ?>">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Kelola Order
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<?= base_url('laporan'); ?>" class="nav-link <?= ($segment == 'laporan') ? 'active' : ''; ?>">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Laporan
-            </p>
-          </a>
-        </li>
+        <?php if ($this->session->userdata('id_role') != 2) : ?>
+          <li class="nav-item">
+            <a href="<?= base_url('order'); ?>" class="nav-link <?= ($segment == 'order') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Kelola Order
+              </p>
+            </a>
+          </li>
+        <?php endif; ?>
+        <?php if ($this->session->userdata('id_role') != 3) : ?>
+          <li class="nav-item">
+            <a href="<?= base_url('laporan'); ?>" class="nav-link <?= ($segment == 'laporan') ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Laporan
+              </p>
+            </a>
+          </li>
+        <?php endif; ?>
         <li class="nav-item  <?= ($segment == 'profile' || $segment == 'gantipass') ? 'menu-open' : ''; ?>">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
