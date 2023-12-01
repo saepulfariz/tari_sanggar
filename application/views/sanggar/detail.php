@@ -68,7 +68,7 @@
                             <tr>
                                 <td>Tentang Sanggar</td>
                                 <td>:</td>
-                                <td><?= $data['tentang_sanggar']; ?></td>
+                                <td><?= nl2br($data['tentang_sanggar']); ?></td>
                             </tr>
                         </table>
 
@@ -106,7 +106,7 @@
                                         <tr>
                                             <td>Keterangan Paket</td>
                                             <td>:</td>
-                                            <td><?= $d['keterangan_paket']; ?></td>
+                                            <td><?= nl2br($d['keterangan_paket']); ?></td>
                                         </tr>
                                     </table>
                                 </div>
