@@ -22,7 +22,7 @@
 <?= $this->alert->init('jquery'); ?>
 
 <script>
-  var table = $('.table').DataTable({
+  var table = $('#table2').DataTable({
     // responsive: true,
     "dom": 'Bflrtip',
     buttons: [{
